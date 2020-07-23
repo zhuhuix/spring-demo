@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout"
+>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h3>用户列表</h3>
+<div>
+    <a th:href="@{/user/form}">创建用户</a>
+</div>
+<table border="1">
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>Email</td>
+        <td>Name</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${userModel.userList.size()} eq 0">
+        <td colspan="3">没有用户信息！</td>
+    </tr>
+    <tr th:each="user:${userModel.userList}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.name}"></td>
+        <td><a th:href="@{/user/form(id=${user.id})}"> 修改 </a></td>
+        <td><a th:href="@{/user/del(id=${user.id})}"> 删除 </a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

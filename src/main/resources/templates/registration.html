@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h3>管理员注册</h3>
+<form action="/admin" th:action="@{/admin/register}" method="POST" th:object="${adminModel.admin}">
+    名称：<br>
+    <input type="text" name="userName" th:value="*{userName}" >
+    <br>
+    输入密码：<br>
+    <input type="password" name="userPassword" th:value="*{userPassword}">
+    <br>
+    <input type="submit" value="注册" >
+</form>
+</body>
+</html>

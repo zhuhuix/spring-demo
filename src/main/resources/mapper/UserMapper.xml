@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.register.UserMapper">
+    <select id="findAll" resultType="com.example.demo.register.User" >
+        select * from user;
+    </select>
+    <insert id="addUser"  parameterType="com.example.demo.register.User" useGeneratedKeys="true" keyProperty="id">
+        insert into user (name,email) values (#{name},#{email});
+    </insert>
+    <update id="updateUser" parameterType="com.example.demo.register.User">
+        update user set name=#{name},email=#{email} where id=#{id}
+    </update>
+    <delete id="deleteById">
+        delete from user where id=#{id}
+    </delete>
+    <select id="findById" resultType="com.example.demo.register.User" >
+        select * from user where id=#{id}
+    </select>
+    <select id="findByName" resultType="com.example.demo.register.User">
+        select * from user where name=#{name}
+    </select>
+
+</mapper>

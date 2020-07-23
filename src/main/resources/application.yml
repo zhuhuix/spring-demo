@@ -1,0 +1,54 @@
+###数据源配置
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: root
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: jdbc:log4jdbc:mysql://localhost:3306/user_info?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+
+#thymelea模板配置
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    content-type: text/html
+    cache: false
+
+#mail配置
+  mail:
+    host: xxx.163.com
+    username: xxx@163.com
+    password: xxxxxxx
+    default-encoding: UTF-8
+
+#rabbitmq配置
+  rabbitmq:
+    host: xxx.xxxx.com
+    port: 5672
+    username: rabbitmq
+    password: rabbitmq
+    virtual-host: /
+    connection-timeout: 10000
+    listener:
+      simple:
+        acknowledge-mode: auto # 自动应答
+        auto-startup: true
+        default-requeue-rejected: false # 不重回队列
+        concurrency: 5
+        max-concurrency: 20
+        prefetch: 1 # 每次只处理一个信息
+        retry:
+          enabled: false
+    template:
+      exchange: web.demo
+      routing-key: user.key
+
+#MyBatis配置
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+
+#管理员默认密码
+admin:
+  password: 123456

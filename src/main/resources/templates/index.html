@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" >
+<head>
+     <meta charset="UTF-8"/>
+     <title>Title</title>
+</head>
+ <body>
+
+     <h3>查找用户</h3>
+     <form action="/users" th:action="@{/user/search}" method="POST" th:object="${userModel.user}">
+         名称：<br>
+         <input type="text" name="name" th:value="*{name}" >
+         <br>
+         <input type="submit" value="查询" >
+     </form>
+
+ </body>
+ </html>
